@@ -2,6 +2,9 @@ package org.example;
 
 import java.util.ArrayList;
 
+/**
+ * Class implementing a simple stack
+ */
 public class SimpleStack implements Stack {
 
     /**

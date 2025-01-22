@@ -87,6 +87,15 @@ class SimpleStackTest {
         assertFalse(stack.isEmpty(), "The stack must not be empty");
         assertEquals(1, stack.getSize(),"The stack must constain 1 item");
         assertEquals(item2, poppedItem, "The item popped must be the same as last pushed");
+
+        // When we "pop" the stack
+        poppedItem = stack.pop();
+
+        // Then
+        assertTrue(stack.isEmpty(), "The stack must be empty");
+        assertEquals(0, stack.getSize(),"The stack must constain 0 item");
+        assertEquals(item, poppedItem, "The item popped must be the same as first pushed");
+
     }
 
     @Test
