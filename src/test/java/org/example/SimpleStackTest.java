@@ -50,14 +50,62 @@ class SimpleStackTest {
     }
 
     @Test
-    @Disabled
     @DisplayName("Test limit when trying to pop an empty stack")
     public void testPopOnEmptyStack()  {
         // Given an empty stack
         Stack stack = new SimpleStack();
 
         // When we "pop" the stack, should throws an EmptyStackException.
-        //assertThrows(EmptyStackException.class, ()->stack.pop(), "EmptyStackException not thrown");
         assertThrows(EmptyStackException.class, stack::pop, "EmptyStackException not thrown");
+    }
+
+    @Test
+    @DisplayName("Test limit when trying to peek an empty stack")
+    public void testPeekOnEmptyStack()  {
+        // Given an empty stack
+        Stack stack = new SimpleStack();
+
+        // When we "peek" the stack, should throws an EmptyStackException.
+        assertThrows(EmptyStackException.class, stack::peek, "EmptyStackException not thrown");
+    }
+
+    @Test
+    @DisplayName("Test the pop of items")
+    public void testPop() throws EmptyStackException {
+
+        // Given a stack with 2 items
+        Stack stack = new SimpleStack();
+        Item item = new SimpleItem();
+        Item item2 = new SimpleItem();
+        stack.push(item);
+        stack.push(item2);
+
+        // When we "pop" the stack
+        Item poppedItem = stack.pop();
+
+        // Then
+        assertFalse(stack.isEmpty(), "The stack must not be empty");
+        assertEquals(1, stack.getSize(),"The stack must constain 1 item");
+        assertEquals(item2, poppedItem, "The item popped must be the same as last pushed");
+    }
+
+    @Test
+    @DisplayName("Test the peek of items")
+    public void testPeek() throws EmptyStackException {
+
+        // Given a stack with 2 items
+        Stack stack = new SimpleStack();
+        Item item = new SimpleItem();
+        Item item2 = new SimpleItem();
+        stack.push(item);
+        stack.push(item2);
+
+        // When we "peek" the stack
+        Item peekedItem = stack.peek();
+
+        // Then
+        assertFalse(stack.isEmpty(), "The stack must not be empty");
+        assertEquals(2, stack.getSize(),"The stack must constain 2 items");
+        assertEquals(item2, peekedItem, "The item peeked must be the same as last pushed");
     }
 }
