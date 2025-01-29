@@ -42,7 +42,10 @@ public class SimpleStack implements Stack {
      * @param item an item of the stack
      */
     @Override
-    public void push(Item item) {
+    public void push(Item item) throws NullPointerException {
+        if (item == null) {
+            throw new NullPointerException();
+        }
         stack.add(item);
     }
 
